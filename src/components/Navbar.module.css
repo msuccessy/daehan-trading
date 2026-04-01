@@ -1,0 +1,205 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to bottom, rgba(11, 17, 32, 0.7) 0%, rgba(11, 17, 32, 0) 100%);
+  z-index: 1000;
+  border-bottom: 1px solid transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px 0;
+}
+
+.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 16px 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+.navContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Base logo color is white when transparent, dark when scrolled */
+.logoKr {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--color-white);
+  line-height: 1;
+  transition: color 0.4s ease;
+  letter-spacing: -0.04em;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* The Blue Dot */
+.logoKr::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  margin-left: 4px;
+  margin-bottom: -6px; /* Align slightly lower */
+}
+
+.scrolled .logoKr {
+  color: var(--color-primary);
+}
+
+.logoEn {
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-family: var(--font-inter), sans-serif;
+  transition: all 0.4s ease;
+  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  padding-left: 16px;
+  line-height: 1;
+}
+
+.scrolled .logoEn {
+  color: var(--color-text-light);
+  border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+.navLinks {
+  display: flex;
+  gap: 48px;
+}
+
+.navLinks a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  transition: color 0.3s ease;
+  padding-bottom: 6px;
+}
+
+.navLinks a:hover,
+.active {
+  color: var(--color-white);
+}
+
+.scrolled .navLinks a {
+  color: var(--color-text-light);
+}
+
+.scrolled .navLinks a:hover,
+.scrolled .active {
+  color: var(--color-primary);
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--color-accent);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 2px;
+}
+
+.navLinks a:hover::after,
+.active::after {
+  width: 100%;
+}
+
+.mobileMenuBtn {
+  display: none;
+  cursor: pointer;
+  color: var(--color-white);
+  transition: color 0.3s ease;
+}
+
+.scrolled .mobileMenuBtn {
+  color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .navContainer { padding: 0 24px; }
+  .navLinks { display: none; }
+  .mobileMenuBtn {
+    display: block;
+    cursor: pointer;
+    z-index: 1001; /* Ensure button stays on top of menu overlay */
+  }
+  
+  .logo { gap: 12px; }
+  .logoKr { font-size: 1.25rem; }
+  .logoEn { 
+    font-size: 0.65rem; 
+    padding-left: 12px; 
+    letter-spacing: 0.15em;
+  }
+}
+
+/* Mobile Fullscreen Menu Overlay */
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobileMenuOpen {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.mobileNavLinks a {
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.8);
+  letter-spacing: -0.02em;
+  font-family: var(--font-inter), sans-serif;
+  transition: color 0.2s ease;
+}
+
+.mobileNavLinks a:active,
+.mobileNavLinks a:hover {
+  color: var(--color-white);
+}

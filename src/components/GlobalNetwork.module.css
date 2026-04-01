@@ -1,0 +1,229 @@
+.globalSection {
+  background: var(--color-primary);
+  color: var(--color-white);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Subtle glowing mesh gradient background */
+.globalSection::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 100vw;
+  height: 100vw;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.globalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hubList {
+  margin-top: 48px;
+  list-style: none;
+}
+
+.hubItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: var(--transition-base);
+  opacity: 0.5;
+}
+
+.hubItem:hover, .active {
+  opacity: 1;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.hubDot {
+  width: 12px;
+  height: 12px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: var(--transition-base);
+  position: relative;
+}
+
+.hubItem:hover .hubDot {
+  border-color: var(--color-accent);
+}
+
+.active .hubDot {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 15px var(--color-accent);
+}
+
+.hubName {
+  font-size: 1.15rem;
+  color: var(--color-white);
+  margin-bottom: 4px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hubRole {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.mapContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/11;
+  border-radius: 24px;
+}
+
+.mapVisual {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Rendering the realistic map using the SVG mask technique! */
+.mapMask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(59, 130, 246, 0.15); /* map base color */
+  -webkit-mask-image: url('/assets/map.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-image: url('/assets/map.svg');
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  transition: var(--transition-slow);
+}
+
+.mapPin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition-base);
+}
+
+.mapPin:hover,
+.activePin {
+  z-index: 20;
+}
+
+.pinPulse {
+  width: 10px;
+  height: 10px;
+  background: var(--color-white);
+  border-radius: 50%;
+  position: relative;
+  transition: var(--transition-base);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.mapPin:hover .pinPulse,
+.activePin .pinPulse {
+  background: var(--color-accent);
+  box-shadow: 0 0 15px var(--color-accent);
+  transform: scale(1.4);
+}
+
+.pinPulse::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36px;
+  height: 36px;
+  background: rgba(59, 130, 246, 0);
+  border-radius: 50%;
+  animation: pulse 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.activePin .pinPulse::after {
+  background: rgba(59, 130, 246, 0.4);
+  animation-duration: 1.5s;
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; border: 1px solid rgba(59, 130, 246, 0.8); }
+  100% { transform: translate(-50%, -50%) scale(2); opacity: 0; border: 1px solid transparent; }
+}
+
+.pinLabel {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition-fast);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: var(--shadow-lg);
+  font-family: var(--font-inter), sans-serif;
+  letter-spacing: 0.05em;
+  z-index: 50;
+}
+
+.pinLabel::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px 5px 0;
+  border-style: solid;
+  border-color: rgba(255,255,255,0.95) transparent transparent transparent;
+  display: block;
+  width: 0;
+}
+
+.mapPin:hover .pinLabel,
+.activePin .pinLabel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 1024px) {
+  .globalGrid { grid-template-columns: 1fr; gap: 40px; }
+  .hubList { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .hubItem { padding: 16px; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; background: rgba(255,255,255,0.02); }
+}
+
+@media (max-width: 768px) {
+  .mapContainer {
+    aspect-ratio: 1/1;
+    min-height: 280px;
+    margin: 0 -40px;
+    width: calc(100% + 80px);
+    border-radius: 0;
+  }
+}
