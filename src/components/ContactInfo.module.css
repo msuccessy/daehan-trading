@@ -1,0 +1,111 @@
+.contactSection {
+  background: var(--color-bg-light);
+}
+
+.contactWrapper {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.contactHeader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contactHeader .section-desc,
+.contactHeader > p {
+  margin-inline: auto;
+}
+
+.channelRail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.channelCard {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  text-align: start;
+}
+
+.channelCard:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: var(--shadow-lg);
+}
+
+.channelCardWide {
+  grid-column: 1 / -1;
+}
+
+.channelIcon {
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.channelLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  font-family: var(--font-inter), sans-serif;
+}
+
+.channelValue {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  word-break: break-word;
+}
+
+a.channelValue {
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a.channelValue:hover {
+  color: var(--color-accent);
+}
+
+@media (max-width: 768px) {
+  .contactWrapper {
+    gap: 40px;
+  }
+  .channelRail {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .channelCard {
+    padding: 24px 22px;
+  }
+  .channelValue {
+    font-size: 1rem;
+  }
+}
+
+/* Disable letter-spacing tightening for non-Latin scripts where it harms legibility */
+:global([lang='ar']) .channelValue,
+:global([lang='zh']) .channelValue {
+  letter-spacing: 0;
+}
+:global([lang='ar']) .channelLabel,
+:global([lang='zh']) .channelLabel {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}

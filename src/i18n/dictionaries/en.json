@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "DAEHAN TRADE | Global Used Phone Wholesale",
+    "description": "DAEHAN TRADE — the hub of used-phone wholesale and export, with direct global supply channels for safe, high-volume trade."
+  },
+  "nav": {
+    "vision": "Vision",
+    "news": "Industry News",
+    "global": "Global Network",
+    "contact": "Contact"
+  },
+  "logo": {
+    "primary": "DAEHAN",
+    "secondary": "TRADE",
+    "ariaLabel": "DAEHAN TRADE"
+  },
+  "hero": {
+    "slides": [
+      {
+        "subtitle": "Global Standard",
+        "titleLines": ["The hub of used-phone export trade", "starts with DAEHAN TRADE"],
+        "desc": "Direct supply channels across Asia (Hong Kong), Europe and Africa (Dubai, Uzbekistan).",
+        "alt": "Global distribution network"
+      },
+      {
+        "subtitle": "Premium Quality",
+        "titleLines": ["The grading benchmark", "you can buy with confidence"],
+        "desc": "Distributed under DAEHAN TRADE's global standard — verified by professional inspection equipment and trained specialists.",
+        "alt": "Premium devices"
+      }
+    ]
+  },
+  "news": {
+    "badge": "Industry News",
+    "title": "Market trends and company updates",
+    "desc": "The latest from the fast-moving mobile market and the global used-smartphone trade.",
+    "viewAll": "More news",
+    "category": "Press",
+    "fallback": "News is unavailable right now. Please try again shortly.",
+    "readMore": "Read more",
+    "sourceLanguageNote": "Sources are currently in Korean — English coverage coming soon."
+  },
+  "global": {
+    "badge": "Worldwide Network",
+    "titleLines": ["Connecting the world", "DAEHAN TRADE's direct global channels"],
+    "desc": "Starting from Korea, we operate direct distribution channels across Asia (Shenzhen, Hong Kong), Europe (Uzbekistan), and the Middle East and Africa (Dubai).",
+    "hubs": {
+      "seoul":    { "name": "Seoul",        "shortLabel": "Seoul",     "role": "Headquarters / Global control tower" },
+      "shenzhen": { "name": "Shenzhen",     "shortLabel": "Shenzhen",  "role": "China Branch / Asia logistics hub" },
+      "hongkong": { "name": "Hong Kong",    "shortLabel": "Hong Kong", "role": "Asia Branch / direct Asia channel" },
+      "dubai":    { "name": "Dubai",        "shortLabel": "Dubai",     "role": "MEA Branch / direct Middle East and Africa channel" },
+      "uzbek":    { "name": "Uzbekistan",   "shortLabel": "Uzbekistan","role": "CIS Branch / direct Europe and Central Asia channel" }
+    }
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "titleLines": ["Talk to our trade desk"],
+    "descLines": ["For secure, high-volume import and export deals,", "our team responds within one business day."],
+    "channels": {
+      "address": { "label": "Headquarters", "value": "Unit 3604, 6F, Building C, 40 Simindae-ro 365beon-gil, Dongan-gu, Anyang, Gyeonggi, Korea" },
+      "phone":   { "label": "Phone",        "value": "+82 10 8991 2680" },
+      "email":   { "label": "Email",        "value": "cs@daehantrade.kr" }
+    }
+  },
+  "footer": {
+    "tagline": "The hub of used-phone export trade, DAEHAN TRADE.",
+    "sections": {
+      "company":  { "heading": "COMPANY",  "links": ["About", "Philosophy", "Press Center"] },
+      "business": { "heading": "BUSINESS", "links": ["Global B2B Trade", "Premium Device Distribution", "Quality Inspection Service"] },
+      "legal":    { "heading": "LEGAL",    "links": ["Terms of Use", "Privacy Policy"] }
+    },
+    "copyright": "© 2026 DAEHAN TRADE Corp. All Rights Reserved."
+  },
+  "switcher": {
+    "label": "Choose language",
+    "selected": "Current language"
+  }
+}

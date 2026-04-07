@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "DAEHAN TRADE | Ishlatilgan telefonlarning global ulgurji savdosi",
+    "description": "DAEHAN TRADE — ishlatilgan telefonlar eksport savdosining markazi. Xavfsiz va tezkor yirik bitimlar uchun global to‘g‘ridan-to‘g‘ri kanallar."
+  },
+  "nav": {
+    "vision": "Bizning vizion",
+    "news": "Sohaning yangiliklari",
+    "global": "Global tarmoq",
+    "contact": "Bog‘lanish"
+  },
+  "logo": {
+    "primary": "DAEHAN",
+    "secondary": "TRADE",
+    "ariaLabel": "DAEHAN TRADE"
+  },
+  "hero": {
+    "slides": [
+      {
+        "subtitle": "Global Standard",
+        "titleLines": ["Ishlatilgan telefon eksporti markazi", "DAEHAN TRADE bilan boshlanadi"],
+        "desc": "Osiyo (Gonkong), Yevropa va Afrika (Dubay, Oʻzbekiston) hududlarida toʻgʻridan-toʻgʻri yetkazib berish kanallari.",
+        "alt": "Global tarqatish tarmog‘i"
+      },
+      {
+        "subtitle": "Premium Quality",
+        "titleLines": ["Ishonib sotib olish mumkin boʻlgan", "ishlatilgan telefon baholash standarti"],
+        "desc": "DAEHAN TRADE’ning global standarti boʻyicha tarqatiladi — professional tekshiruv jihozlari va malakali mutaxassislar tomonidan tasdiqlanadi.",
+        "alt": "Premium qurilmalar"
+      }
+    ]
+  },
+  "news": {
+    "badge": "Industry News",
+    "title": "Bozor tendensiyalari va kompaniya yangiliklari",
+    "desc": "Tez o‘zgaruvchan mobil bozor va global ishlatilgan smartfon savdosi haqidagi eng so‘nggi yangiliklar.",
+    "viewAll": "Barcha yangiliklar",
+    "category": "Press-reliz",
+    "fallback": "Yangiliklarni hozir yuklab bo‘lmadi. Iltimos, keyinroq urinib ko‘ring.",
+    "readMore": "Batafsil",
+    "sourceLanguageNote": "Manbalar hozircha koreys tilida — oʻzbekcha versiya tez orada tayyor boʻladi."
+  },
+  "global": {
+    "badge": "Worldwide Network",
+    "titleLines": ["Dunyoni bog‘laymiz", "DAEHAN TRADE’ning to‘g‘ridan-to‘g‘ri global kanallari"],
+    "desc": "Koreyadan boshlab Osiyo (Shenchjen, Gonkong), Yevropa (Oʻzbekiston) va Yaqin Sharq hamda Afrikada (Dubay) toʻgʻridan-toʻgʻri tarqatish tarmogʻiga egamiz.",
+    "hubs": {
+      "seoul":    { "name": "Seul",        "shortLabel": "Seoul",     "role": "Bosh ofis / Global boshqaruv markazi" },
+      "shenzhen": { "name": "Shenchjen",   "shortLabel": "Shenzhen",  "role": "Xitoy filiali / Osiyo logistika markazi" },
+      "hongkong": { "name": "Gonkong",     "shortLabel": "Hong Kong", "role": "Osiyo filiali / toʻgʻridan-toʻgʻri Osiyo kanali" },
+      "dubai":    { "name": "Dubay",       "shortLabel": "Dubai",     "role": "MEA filiali / Yaqin Sharq va Afrika kanali" },
+      "uzbek":    { "name": "Oʻzbekiston", "shortLabel": "Uzbekistan","role": "MDH filiali / Yevropa va Markaziy Osiyo kanali" }
+    }
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "titleLines": ["Savdo bo‘limimiz bilan bog‘laning"],
+    "descLines": ["Xavfsiz va yirik miqdorli import va eksport bitimlari uchun", "jamoamiz bir ish kuni ichida javob beradi."],
+    "channels": {
+      "address": { "label": "Bosh ofis", "value": "3604-xona, 6-qavat, C bino, 40 Simindae-ro 365beon-gil, Dongan-gu, Anyang, Gyeonggi, Koreya" },
+      "phone":   { "label": "Telefon",   "value": "+82 10 8991 2680" },
+      "email":   { "label": "E-pochta",  "value": "cs@daehantrade.kr" }
+    }
+  },
+  "footer": {
+    "tagline": "Ishlatilgan telefon eksporti markazi · DAEHAN TRADE",
+    "sections": {
+      "company":  { "heading": "COMPANY",  "links": ["Kompaniya haqida", "Falsafa", "Matbuot markazi"] },
+      "business": { "heading": "BUSINESS", "links": ["Global B2B savdo", "Premium qurilmalar tarqatish", "Sifat nazorati xizmati"] },
+      "legal":    { "heading": "LEGAL",    "links": ["Foydalanish shartlari", "Maxfiylik siyosati"] }
+    },
+    "copyright": "© 2026 DAEHAN TRADE Corp. Barcha huquqlar himoyalangan."
+  },
+  "switcher": {
+    "label": "Tilni tanlang",
+    "selected": "Joriy til"
+  }
+}

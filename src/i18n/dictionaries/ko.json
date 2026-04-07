@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "대한무역 | DAEHAN TRADE",
+    "description": "중고폰 수출무역의 중심, 대한무역. 글로벌 직영 채널로 안전하고 신속한 대량 거래를 지원합니다."
+  },
+  "nav": {
+    "vision": "기업 비전",
+    "news": "최신 동향",
+    "global": "글로벌 네트워크",
+    "contact": "문의하기"
+  },
+  "logo": {
+    "primary": "대한무역",
+    "secondary": "DAEHAN TRADE",
+    "ariaLabel": "대한무역 DAEHAN TRADE"
+  },
+  "hero": {
+    "slides": [
+      {
+        "subtitle": "Global Standard",
+        "titleLines": ["중고폰 수출무역의 중심", "대한무역으로부터 시작됩니다"],
+        "desc": "아시아(홍콩) 및 유럽, 아프리카(두바이, 우즈벡) 직영 공급망 보유",
+        "alt": "글로벌 유통망"
+      },
+      {
+        "subtitle": "Premium Quality",
+        "titleLines": ["믿고 구매할 수 있는", "중고폰 등급의 기준"],
+        "desc": "전문 검수 장비와 전문 인력의 신뢰 등급으로 유통하는, 대한무역만의 글로벌 표준",
+        "alt": "프리미엄 기기"
+      }
+    ]
+  },
+  "news": {
+    "badge": "Industry News",
+    "title": "산업 동향 및 기업소식",
+    "desc": "급변하는 모바일 시장과 중고 스마트폰 수출 업계의 생생한 최신 뉴스를 전합니다.",
+    "viewAll": "최신 뉴스 더보기",
+    "category": "보도자료",
+    "fallback": "뉴스를 불러올 수 없습니다. 잠시 후 다시 시도해주세요.",
+    "readMore": "자세히 보기",
+    "sourceLanguageNote": ""
+  },
+  "global": {
+    "badge": "Worldwide Network",
+    "titleLines": ["세계를 연결하는", "대한무역의 글로벌 직영 채널"],
+    "desc": "대한민국을 시작으로 아시아(심천, 홍콩), 유럽(우즈벡), 중동과 아프리카(두바이) 지역의 직영 유통망을 보유하고 있습니다.",
+    "hubs": {
+      "seoul":    { "name": "서울",         "shortLabel": "Seoul",     "role": "본사 / 글로벌 컨트롤 타워" },
+      "shenzhen": { "name": "심천",         "shortLabel": "Shenzhen",  "role": "차이나 지사 / 아시아 물류 허브" },
+      "hongkong": { "name": "홍콩",         "shortLabel": "Hong Kong", "role": "아시아 지사 / 아시아 직영 채널" },
+      "dubai":    { "name": "두바이",       "shortLabel": "Dubai",     "role": "MEA 지사 / 중동·아프리카 직영 채널" },
+      "uzbek":    { "name": "우즈베키스탄", "shortLabel": "Uzbekistan","role": "CIS 지사 / 유럽·중앙아시아 직영 채널" }
+    }
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "titleLines": ["비즈니스 파트너십 문의"],
+    "descLines": ["안전하고 신속한 대량 수출입 거래를 위해", "대한무역의 담당자가 빠르게 답변해 드립니다."],
+    "channels": {
+      "address": { "label": "본사 주소", "value": "경기도 안양시 동안구 시민대로365번길 40, 씨동 6층 3604호" },
+      "phone":   { "label": "대표 전화", "value": "+82 10 8991 2680" },
+      "email":   { "label": "이메일",    "value": "cs@daehantrade.kr" }
+    }
+  },
+  "footer": {
+    "tagline": "중고폰 수출무역의 중심, 대한무역",
+    "sections": {
+      "company":  { "heading": "COMPANY",  "links": ["회사 소개", "경영 철학", "홍보 센터"] },
+      "business": { "heading": "BUSINESS", "links": ["글로벌 B2B 수출입", "프리미엄 단말기 유통", "전문 품질 검수 솔루션"] },
+      "legal":    { "heading": "LEGAL",    "links": ["이용약관", "개인정보처리방침"] }
+    },
+    "copyright": "© 2026 DAEHAN TRADE Corp. All Rights Reserved."
+  },
+  "switcher": {
+    "label": "언어 선택",
+    "selected": "현재 언어"
+  }
+}

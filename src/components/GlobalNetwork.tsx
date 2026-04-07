@@ -1,65 +1,83 @@
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import styles from './GlobalNetwork.module.css';
+import type { Dict } from '@/i18n/get-dictionary';
 
-// Coordinates adjusted to match the real world map projection
-// Map represents: X / Left (Longitude), Y / Top (Latitude)
-const HUBS = [
-  { id: 'seoul', name: '서울 (Seoul)', role: 'Headquarter / 글로벌 컨트롤 타워', top: '35%', left: '84%' },
-  { id: 'shenzhen', name: '심천 (Shenzhen)', role: 'China Branch / 아시아 물류 허브', top: '44%', left: '80%' },
-  { id: 'hongkong', name: '홍콩 (Hong Kong)', role: 'Financial & Trade Branch', top: '45.5%', left: '80.5%' },
-  { id: 'dubai', name: '두바이 (Dubai)', role: 'MEA Branch / 중동·아프리카 진출 교두보', top: '42.5%', left: '65.5%' },
-  { id: 'uzbek', name: '우즈베키스탄 (Uzbekistan)', role: 'CIS Branch / 중앙아시아 신규 거점', top: '30%', left: '69%' }
-];
+interface Props {
+  dict: Dict['global'];
+}
 
-export default function GlobalNetwork() {
-  const [activeHub, setActiveHub] = useState('seoul');
+// Map coordinates are geographic and stay LTR even on RTL pages.
+// Hub IDs are stable; localized names + roles come from the dictionary.
+const HUB_COORDINATES = [
+  { id: 'seoul',    top: '35%',   left: '84%' },
+  { id: 'shenzhen', top: '44%',   left: '80%' },
+  { id: 'hongkong', top: '45.5%', left: '80.5%' },
+  { id: 'dubai',    top: '42.5%', left: '65.5%' },
+  { id: 'uzbek',    top: '30%',   left: '69%' },
+] as const;
+
+type HubId = (typeof HUB_COORDINATES)[number]['id'];
+
+export default function GlobalNetwork({ dict }: Props) {
+  const [activeHub, setActiveHub] = useState<HubId>('seoul');
 
   return (
     <section id="global" className={`section-padding ${styles.globalSection}`}>
       <div className="container">
         <div className={styles.globalGrid}>
           <div className={styles.globalText}>
-            <span className="section-badge">Worldwide Network</span>
+            <span className="section-badge">{dict.badge}</span>
             <h2 className="section-title" style={{ color: 'var(--color-white)' }}>
-              세계를 연결하는<br />견고한 인프라
-            </h2>
-            <p className="section-desc" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem' }}>
-              한국을 넘어 아시아와 중동을 잇는 단단한 파트너십. 전 세계 주요 스마트폰 유통 거점에 대한무역이 있습니다.
-            </p>
-            
-            <ul className={styles.hubList}>
-              {HUBS.map(hub => (
-                <li 
-                  key={hub.id}
-                  className={`${styles.hubItem} ${activeHub === hub.id ? styles.active : ''}`}
-                  onMouseEnter={() => setActiveHub(hub.id)}
-                >
-                  <span className={styles.hubDot}></span>
-                  <div className={styles.hubInfo}>
-                    <h4 className={styles.hubName}>{hub.name}</h4>
-                    <p className={styles.hubRole}>{hub.role}</p>
-                  </div>
-                </li>
+              {dict.titleLines.map((line, i) => (
+                <Fragment key={i}>
+                  {line}
+                  {i < dict.titleLines.length - 1 && <br />}
+                </Fragment>
               ))}
+            </h2>
+            <p
+              className="section-desc"
+              style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem' }}
+            >
+              {dict.desc}
+            </p>
+
+            <ul className={styles.hubList}>
+              {HUB_COORDINATES.map((hub) => {
+                const data = dict.hubs[hub.id];
+                return (
+                  <li
+                    key={hub.id}
+                    className={`${styles.hubItem} ${activeHub === hub.id ? styles.active : ''}`}
+                    onMouseEnter={() => setActiveHub(hub.id)}
+                  >
+                    <span className={styles.hubDot}></span>
+                    <div className={styles.hubInfo}>
+                      <h4 className={styles.hubName}>{data.name}</h4>
+                      <p className={styles.hubRole}>{data.role}</p>
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           </div>
-          
+
+          {/* Map is geographic — stays LTR even on RTL pages (see .module.css) */}
           <div className={styles.mapContainer}>
             <div className={styles.mapVisual}>
-              {/* React SVG Mask for rendering the beautiful dotted world map */}
               <div className={styles.mapMask}></div>
-              
-              {HUBS.map(hub => (
-                <div 
+
+              {HUB_COORDINATES.map((hub) => (
+                <div
                   key={`pin-${hub.id}`}
                   className={`${styles.mapPin} ${activeHub === hub.id ? styles.activePin : ''}`}
                   style={{ top: hub.top, left: hub.left }}
                   onMouseEnter={() => setActiveHub(hub.id)}
                 >
                   <div className={styles.pinPulse}></div>
-                  <span className={styles.pinLabel}>{hub.id.charAt(0).toUpperCase() + hub.id.slice(1)}</span>
+                  <span className={styles.pinLabel}>{dict.hubs[hub.id].shortLabel}</span>
                 </div>
               ))}
             </div>
