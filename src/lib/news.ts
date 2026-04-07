@@ -354,10 +354,12 @@ export async function getLatestNews(): Promise<NewsItem[]> {
 
   const unique = dedupeByLink(allItems);
 
-  // Score & rank: strong matches first, then by recency. Items below the
-  // weak threshold are dropped entirely (no fallback to irrelevant items).
-  const ranked = unique
+  // Score & rank: strong matches first, then by recency.
+  const scored = unique
     .map((item) => ({ item, score: relevanceScore(item) }))
+    .filter((entry) => entry.score > 0);
+
+  const relevant = scored
     .filter((entry) => entry.score >= WEAK_THRESHOLD)
     .sort((a, b) => {
       if (b.score !== a.score) return b.score - a.score;
@@ -366,6 +368,17 @@ export async function getLatestNews(): Promise<NewsItem[]> {
     .slice(0, 3)
     .map((entry) => entry.item);
 
+  // If fewer than 3 relevant items, fill remaining slots with most recent articles.
+  if (relevant.length < 3) {
+    const usedLinks = new Set(relevant.map((r) => r.link));
+    const recents = unique
+      .filter((item) => !usedLinks.has(item.link) && relevanceScore(item) >= 0)
+      .sort((a, b) => b.pubDate - a.pubDate)
+      .slice(0, 3 - relevant.length);
+    relevant.push(...recents);
+  }
+
+  const ranked = relevant;
   if (ranked.length === 0) return [];
 
   // For each chosen item, hit the article URL once and grab og:image + og:description.
@@ -406,3 +419,4 @@ export async function getLatestNews(): Promise<NewsItem[]> {
     };
   });
 }
+
