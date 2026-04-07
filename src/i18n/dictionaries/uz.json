@@ -1,13 +1,13 @@
 {
   "meta": {
     "title": "DAEHAN TRADE | Ishlatilgan telefonlarning global ulgurji savdosi",
-    "description": "DAEHAN TRADE — ishlatilgan telefonlar eksport savdosining markazi. Xavfsiz va tezkor yirik bitimlar uchun global to‘g‘ridan-to‘g‘ri kanallar."
+    "description": "DAEHAN TRADE — ishlatilgan telefonlar eksport savdosining markazi. Xavfsiz va tezkor yirik hajmli bitimlar uchun global toʻgʻridan-toʻgʻri kanallar."
   },
   "nav": {
-    "vision": "Bizning vizion",
-    "news": "Sohaning yangiliklari",
+    "vision": "Korporativ vizion",
+    "news": "Soha yangiliklari",
     "global": "Global tarmoq",
-    "contact": "Bog‘lanish"
+    "contact": "Bogʻlanish"
   },
   "logo": {
     "primary": "DAEHAN",
@@ -18,61 +18,61 @@
     "slides": [
       {
         "subtitle": "Global Standard",
-        "titleLines": ["Ishlatilgan telefon eksporti markazi", "DAEHAN TRADE bilan boshlanadi"],
-        "desc": "Osiyo (Gonkong), Yevropa va Afrika (Dubay, Oʻzbekiston) hududlarida toʻgʻridan-toʻgʻri yetkazib berish kanallari.",
-        "alt": "Global tarqatish tarmog‘i"
+        "titleLines": ["Ishlatilgan telefonlar eksportining markazi", "DAEHAN TRADEʼdan boshlanadi"],
+        "desc": "Osiyo (Gonkong), Markaziy Osiyo (Oʻzbekiston) hamda Yaqin Sharq va Afrika (Dubay) hududlarida toʻgʻridan-toʻgʻri yetkazib berish kanallariga egamiz.",
+        "alt": "Global tarqatish tarmogʻi"
       },
       {
         "subtitle": "Premium Quality",
-        "titleLines": ["Ishonib sotib olish mumkin boʻlgan", "ishlatilgan telefon baholash standarti"],
-        "desc": "DAEHAN TRADE’ning global standarti boʻyicha tarqatiladi — professional tekshiruv jihozlari va malakali mutaxassislar tomonidan tasdiqlanadi.",
+        "titleLines": ["Ishonib sotib olish mumkin boʻlgan", "ishlatilgan telefonlar tasnifi mezoni"],
+        "desc": "Professional tekshiruv jihozlari va malakali mutaxassislar tomonidan tasdiqlangan ishonch darajasida tarqatiladigan — faqat DAEHAN TRADEʼga xos jahon standarti.",
         "alt": "Premium qurilmalar"
       }
     ]
   },
   "news": {
     "badge": "Industry News",
-    "title": "Bozor tendensiyalari va kompaniya yangiliklari",
-    "desc": "Tez o‘zgaruvchan mobil bozor va global ishlatilgan smartfon savdosi haqidagi eng so‘nggi yangiliklar.",
-    "viewAll": "Barcha yangiliklar",
+    "title": "Soha tendensiyalari va kompaniya yangiliklari",
+    "desc": "Tez oʻzgaruvchan mobil bozor va jahon ishlatilgan smartfon savdosi sohasidagi eng soʻnggi va jonli yangiliklar.",
+    "viewAll": "Barcha yangiliklarni koʻrish",
     "category": "Press-reliz",
-    "fallback": "Yangiliklarni hozir yuklab bo‘lmadi. Iltimos, keyinroq urinib ko‘ring.",
+    "fallback": "Yangiliklarni yuklab boʻlmadi. Iltimos, biroz vaqtdan soʻng qayta urinib koʻring.",
     "readMore": "Batafsil",
     "sourceLanguageNote": "Manbalar hozircha koreys tilida — oʻzbekcha versiya tez orada tayyor boʻladi."
   },
   "global": {
     "badge": "Worldwide Network",
-    "titleLines": ["Dunyoni bog‘laymiz", "DAEHAN TRADE’ning to‘g‘ridan-to‘g‘ri global kanallari"],
-    "desc": "Koreyadan boshlab Osiyo (Shenchjen, Gonkong), Yevropa (Oʻzbekiston) va Yaqin Sharq hamda Afrikada (Dubay) toʻgʻridan-toʻgʻri tarqatish tarmogʻiga egamiz.",
+    "titleLines": ["Dunyoni bogʻlovchi", "DAEHAN TRADEʼning toʻgʻridan-toʻgʻri jahon kanallari"],
+    "desc": "Koreyadan boshlab Osiyo (Shenchjen, Gonkong), Markaziy Osiyo (Oʻzbekiston), Yaqin Sharq va Afrika (Dubay) hududlarida toʻgʻridan-toʻgʻri tarqatish tarmogʻiga egamiz.",
     "hubs": {
-      "seoul":    { "name": "Seul",        "shortLabel": "Seoul",     "role": "Bosh ofis / Global boshqaruv markazi" },
-      "shenzhen": { "name": "Shenchjen",   "shortLabel": "Shenzhen",  "role": "Xitoy filiali / Osiyo logistika markazi" },
+      "seoul":    { "name": "Seul",        "shortLabel": "Seoul",     "role": "Bosh ofis / Jahon boshqaruv markazi" },
+      "shenzhen": { "name": "Shenchjen",   "shortLabel": "Shenzhen",  "role": "Xitoy filiali / Osiyo logistika hubi" },
       "hongkong": { "name": "Gonkong",     "shortLabel": "Hong Kong", "role": "Osiyo filiali / toʻgʻridan-toʻgʻri Osiyo kanali" },
       "dubai":    { "name": "Dubay",       "shortLabel": "Dubai",     "role": "MEA filiali / Yaqin Sharq va Afrika kanali" },
-      "uzbek":    { "name": "Oʻzbekiston", "shortLabel": "Uzbekistan","role": "MDH filiali / Yevropa va Markaziy Osiyo kanali" }
+      "uzbek":    { "name": "Oʻzbekiston", "shortLabel": "Uzbekistan","role": "MDH filiali / Markaziy Osiyo va Sharqiy Yevropa kanali" }
     }
   },
   "contact": {
     "badge": "Contact Us",
-    "titleLines": ["Savdo bo‘limimiz bilan bog‘laning"],
-    "descLines": ["Xavfsiz va yirik miqdorli import va eksport bitimlari uchun", "jamoamiz bir ish kuni ichida javob beradi."],
+    "titleLines": ["Biznes hamkorlik uchun bogʻlaning"],
+    "descLines": ["Xavfsiz va yirik hajmli eksport-import bitimlari uchun", "DAEHAN TRADE mutaxassislari tezkor javob beradi."],
     "channels": {
-      "address": { "label": "Bosh ofis", "value": "3604-xona, 6-qavat, C bino, 40 Simindae-ro 365beon-gil, Dongan-gu, Anyang, Gyeonggi, Koreya" },
-      "phone":   { "label": "Telefon",   "value": "+82 10 8991 2680" },
-      "email":   { "label": "E-pochta",  "value": "cs@daehantrade.kr" }
+      "address": { "label": "Bosh ofis manzili", "value": "Koreya, Gyeonggi viloyati, Anyang sh., Dongan-gu, Simindae-ro 365beon-gil, 40, C bino, 6-qavat, 3604-xona" },
+      "phone":   { "label": "Telefon",            "value": "+82 10 8991 2680" },
+      "email":   { "label": "E-pochta",           "value": "cs@daehantrade.kr" }
     }
   },
   "footer": {
-    "tagline": "Ishlatilgan telefon eksporti markazi · DAEHAN TRADE",
+    "tagline": "Ishlatilgan telefonlar eksportining markazi · DAEHAN TRADE",
     "sections": {
-      "company":  { "heading": "COMPANY",  "links": ["Kompaniya haqida", "Falsafa", "Matbuot markazi"] },
-      "business": { "heading": "BUSINESS", "links": ["Global B2B savdo", "Premium qurilmalar tarqatish", "Sifat nazorati xizmati"] },
+      "company":  { "heading": "COMPANY",  "links": ["Kompaniya haqida", "Boshqaruv falsafasi", "Matbuot xizmati"] },
+      "business": { "heading": "BUSINESS", "links": ["Global B2B savdo", "Premium qurilmalar tarqatish", "Professional sifat nazorati yechimi"] },
       "legal":    { "heading": "LEGAL",    "links": ["Foydalanish shartlari", "Maxfiylik siyosati"] }
     },
-    "copyright": "© 2026 DAEHAN TRADE Corp. Barcha huquqlar himoyalangan."
+    "copyright": "© 2026 DAEHAN TRADE Corp. Barcha huquqlar himoya qilingan."
   },
   "switcher": {
     "label": "Tilni tanlang",
-    "selected": "Joriy til"
+    "selected": "Tanlangan til"
   }
 }

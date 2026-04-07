@@ -27,7 +27,7 @@ export default async function Home({
       <NewsGrid dict={dict.news} />
       <GlobalNetwork dict={dict.global} />
       <ContactInfo dict={dict.contact} />
-      <Footer dict={dict.footer} locale={locale} />
+      <Footer dict={dict.footer} navDict={dict.nav} locale={locale} />
     </main>
   );
 }

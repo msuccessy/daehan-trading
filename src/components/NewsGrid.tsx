@@ -50,12 +50,15 @@ export default async function NewsGrid({ dict }: Props) {
                 </div>
                 <div className={styles.newsContent}>
                   <div className={styles.newsMeta}>
-                    <span className={styles.newsSource}>{news.sourceName}</span>
+                    <span className={styles.newsSource} lang="ko" dir="ltr">{news.sourceName}</span>
                     <span className={styles.newsMetaDot} aria-hidden="true">·</span>
-                    <span className={styles.newsDate}>{news.date}</span>
+                    <span className={styles.newsDate} lang="ko" dir="ltr">{news.date}</span>
                   </div>
-                  <h3 className={styles.newsHeadline}>{news.title}</h3>
-                  <p className={styles.newsSummary}>{news.preview}</p>
+                  {/* All RSS sources are Korean — pin lang/dir so non-Korean
+                      locales don't apply Arabic/CJK fonts to Hangul or flip
+                      the Korean text into RTL flow. */}
+                  <h3 className={styles.newsHeadline} lang="ko" dir="ltr">{news.title}</h3>
+                  <p className={styles.newsSummary} lang="ko" dir="ltr">{news.preview}</p>
                   <div className={styles.newsCta}>
                     <span>{dict.readMore}</span>
                     <span aria-hidden="true">→</span>

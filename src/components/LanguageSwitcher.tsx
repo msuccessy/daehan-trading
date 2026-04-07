@@ -14,9 +14,19 @@ import styles from './LanguageSwitcher.module.css';
 interface Props {
   locale: Locale;
   switcherDict: { label: string; selected: string };
+  /**
+   * Visual theme of the trigger button.
+   *  - `dark` (default) — for dark backgrounds (transparent navbar): white pill
+   *  - `light` — for light backgrounds (scrolled navbar): dark text on subtle bg
+   */
+  theme?: 'light' | 'dark';
 }
 
-export default function LanguageSwitcher({ locale, switcherDict }: Props) {
+export default function LanguageSwitcher({
+  locale,
+  switcherDict,
+  theme = 'dark',
+}: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
@@ -78,8 +88,10 @@ export default function LanguageSwitcher({ locale, switcherDict }: Props) {
     });
   };
 
+  const themeClass = theme === 'light' ? styles.themeLight : styles.themeDark;
+
   return (
-    <div className={styles.root}>
+    <div className={`${styles.root} ${themeClass}`}>
       <button
         ref={triggerRef}
         type="button"

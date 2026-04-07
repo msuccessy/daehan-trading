@@ -9,20 +9,12 @@
   gap: 8px;
   padding: 8px 14px;
   min-height: 40px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
-  color: var(--color-white);
   font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   font-family: inherit;
-}
-
-.trigger:hover {
-  background: rgba(255, 255, 255, 0.14);
-  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .trigger:focus-visible {
@@ -30,13 +22,26 @@
   outline-offset: 2px;
 }
 
-:global(.scrolled) .trigger {
+/* Dark theme — for transparent navbar over dark hero */
+.themeDark .trigger {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--color-white);
+}
+
+.themeDark .trigger:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Light theme — for scrolled white navbar */
+.themeLight .trigger {
   background: rgba(15, 23, 42, 0.04);
-  border-color: rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(15, 23, 42, 0.12);
   color: var(--color-primary);
 }
 
-:global(.scrolled) .trigger:hover {
+.themeLight .trigger:hover {
   background: rgba(15, 23, 42, 0.08);
   border-color: rgba(15, 23, 42, 0.2);
 }

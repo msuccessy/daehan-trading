@@ -41,8 +41,10 @@ export default function Navbar({ dict, locale }: Props) {
     e.preventDefault();
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
+      const isMobile = window.innerWidth <= 768;
+      const offset = isMobile ? 60 : 0;
       window.scrollTo({
-        top: targetElement.offsetTop - 80,
+        top: targetElement.offsetTop - offset,
         behavior: 'smooth',
       });
       setIsMobileMenuOpen(false);
@@ -58,8 +60,8 @@ export default function Navbar({ dict, locale }: Props) {
             <span className={`${styles.logoSymbolImg} ${styles.logoSymbolDark}`} />
           </span>
           <span className={styles.logoText}>
-            <span className={styles.logoKr}>{dict.logo.primary}</span>
-            <span className={styles.logoEn}>{dict.logo.secondary}</span>
+            <span className={styles.logoKr}>대한무역</span>
+            <span className={styles.logoEn}>DAEHAN TRADE</span>
           </span>
         </Link>
         <nav className={styles.navLinks}>
@@ -93,7 +95,7 @@ export default function Navbar({ dict, locale }: Props) {
           </a>
         </nav>
         <div className={styles.navRight}>
-          <LanguageSwitcher locale={locale} switcherDict={dict.switcher} />
+          <LanguageSwitcher locale={locale} switcherDict={dict.switcher} theme={scrolled ? "light" : "dark"} />
           <button
             type="button"
             className={styles.mobileMenuBtn}
@@ -113,6 +115,9 @@ export default function Navbar({ dict, locale }: Props) {
           <a href="#global" onClick={(e) => handleNavClick(e, 'global')}>{dict.nav.global}</a>
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')}>{dict.nav.contact}</a>
         </nav>
+        <div className={styles.mobileLangSwitcher}>
+          <LanguageSwitcher locale={locale} switcherDict={dict.switcher} theme="dark" />
+        </div>
       </div>
     </header>
   );

@@ -245,7 +245,15 @@ function relevanceScore(item: RawItem): number {
   return score;
 }
 
-async function extractOgImage(url: string): Promise<string | null> {
+type OgMeta = { image: string | null; description: string | null };
+
+/**
+ * Best-effort scrape of og:image and og:description from a real article URL.
+ * Used as fallback when the RSS feed doesn't supply media:content or a
+ * description (e.g. 한국경제 RSS only ships title + link + author).
+ */
+async function extractOgMeta(url: string): Promise<OgMeta> {
+  const empty: OgMeta = { image: null, description: null };
   try {
     const res = await fetch(url, {
       next: { tags: ['news'], revalidate: 86400 },
@@ -253,19 +261,75 @@ async function extractOgImage(url: string): Promise<string | null> {
       signal: AbortSignal.timeout(6000),
       headers: { 'User-Agent': USER_AGENT },
     });
-    if (!res.ok) return null;
+    if (!res.ok) return empty;
     const html = await res.text();
-    const m =
-      html.match(/<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i) ||
-      html.match(/<meta\s+content=["']([^"']+)["']\s+property=["']og:image["']/i) ||
-      html.match(/<meta\s+name=["']twitter:image["']\s+content=["']([^"']+)["']/i);
-    if (!m) return null;
-    const raw = m[1];
-    if (/google|gstatic|googleusercontent\.com.*=s\d+/i.test(raw)) return null;
-    return raw;
+
+    const findMeta = (key: 'image' | 'description'): string | null => {
+      const patterns =
+        key === 'image'
+          ? [
+              /<meta\s+property=["']og:image["']\s+content=["']([^"']+)["']/i,
+              /<meta\s+content=["']([^"']+)["']\s+property=["']og:image["']/i,
+              /<meta\s+name=["']twitter:image["']\s+content=["']([^"']+)["']/i,
+            ]
+          : [
+              /<meta\s+property=["']og:description["']\s+content=["']([^"']+)["']/i,
+              /<meta\s+content=["']([^"']+)["']\s+property=["']og:description["']/i,
+              /<meta\s+name=["']description["']\s+content=["']([^"']+)["']/i,
+              /<meta\s+name=["']twitter:description["']\s+content=["']([^"']+)["']/i,
+            ];
+      for (const p of patterns) {
+        const m = html.match(p);
+        if (m && m[1]) return m[1];
+      }
+      return null;
+    };
+
+    let image = findMeta('image');
+    if (image && /google|gstatic|googleusercontent\.com.*=s\d+/i.test(image)) {
+      image = null;
+    }
+    const description = findMeta('description');
+    return { image, description };
   } catch {
-    return null;
+    return empty;
   }
+}
+
+/**
+ * Decode common HTML entities found in og:description / og:image og:title
+ * meta tags. Korean news sites use a mix of:
+ *   - Named entities: &amp; &lt; &gt; &quot; &apos; &nbsp;
+ *   - Decimal numeric: &#39; &#039; &#8217; &#8221;
+ *   - Hex numeric:     &#x27; &#x2019;
+ *
+ * The decimal/hex regexes cover any code point including leading-zero forms,
+ * so we don't need a hand-rolled list of every entity number.
+ */
+function decodeHtmlEntities(s: string): string {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&apos;/g, "'")
+    .replace(/&nbsp;/g, ' ')
+    // Decimal numeric entities, e.g. &#039; → '
+    .replace(/&#(\d+);/g, (_, num) => {
+      try {
+        return String.fromCodePoint(parseInt(num, 10));
+      } catch {
+        return '';
+      }
+    })
+    // Hex numeric entities, e.g. &#x27; → '
+    .replace(/&#[xX]([0-9a-fA-F]+);/g, (_, hex) => {
+      try {
+        return String.fromCodePoint(parseInt(hex, 16));
+      } catch {
+        return '';
+      }
+    });
 }
 
 function dedupeByLink(items: RawItem[]): RawItem[] {
@@ -304,27 +368,41 @@ export async function getLatestNews(): Promise<NewsItem[]> {
 
   if (ranked.length === 0) return [];
 
-  // For items without an inline media image, scrape og:image in parallel
-  const ogImages = await Promise.all(
-    ranked.map((item) =>
-      item.mediaImage ? Promise.resolve(item.mediaImage) : extractOgImage(item.link),
-    ),
+  // For each chosen item, hit the article URL once and grab og:image + og:description.
+  // This covers both missing thumbnails AND missing previews (한국경제 RSS, etc.)
+  // in a single round-trip per article.
+  const ogMetas = await Promise.all(
+    ranked.map((item) => {
+      // Skip the round-trip if the feed already gave us both an image and a usable preview.
+      if (item.mediaImage && item.preview) {
+        return Promise.resolve<OgMeta>({ image: item.mediaImage, description: null });
+      }
+      return extractOgMeta(item.link);
+    }),
   );
 
-  return ranked.map((item, index) => ({
-    id: index,
-    title: item.title || '산업 동향 뉴스',
-    date: item.pubDate
-      ? new Date(item.pubDate).toLocaleDateString('ko-KR', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })
-      : '최근',
-    image: ogImages[index] ?? FALLBACK_IMAGES[index % FALLBACK_IMAGES.length],
-    preview: item.preview,
-    link: item.link,
-    source: item.source,
-    sourceName: prettySourceName(item.source, item.link),
-  }));
+  return ranked.map((item, index) => {
+    const og = ogMetas[index];
+    let preview = item.preview;
+    if (!preview && og.description) {
+      const decoded = decodeHtmlEntities(og.description).trim();
+      preview = decoded.length > 130 ? decoded.slice(0, 130) + '...' : decoded;
+    }
+    return {
+      id: index,
+      title: item.title || '산업 동향 뉴스',
+      date: item.pubDate
+        ? new Date(item.pubDate).toLocaleDateString('ko-KR', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+        : '최근',
+      image: og.image ?? item.mediaImage ?? FALLBACK_IMAGES[index % FALLBACK_IMAGES.length],
+      preview,
+      link: item.link,
+      source: item.source,
+      sourceName: prettySourceName(item.source, item.link),
+    };
+  });
 }

@@ -86,7 +86,9 @@
   flex-grow: 1;
 }
 
-/* Source · Date inline meta line above the headline */
+/* Source · Date inline meta line above the headline.
+ * The values themselves are Korean — pin direction so RTL pages don't
+ * mirror the order. */
 .newsMeta {
   display: flex;
   align-items: center;
@@ -96,6 +98,7 @@
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--color-text-light);
+  direction: ltr;
 }
 
 .newsSource {
@@ -127,6 +130,12 @@
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  /* Korean RSS content always renders in Korean font + LTR flow,
+   * even on Arabic/CJK locale pages where the body font is different. */
+  font-family: var(--font-notoSans), 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  direction: ltr;
+  text-align: start;
+  unicode-bidi: isolate;
 }
 
 .newsCard:hover .newsHeadline {
@@ -143,6 +152,11 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin: 0 0 22px;
+  /* Korean RSS content — same font + LTR pinning as the headline */
+  font-family: var(--font-notoSans), 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  direction: ltr;
+  text-align: start;
+  unicode-bidi: isolate;
 }
 
 /* "자세히 보기 →" CTA pinned to bottom of card */
