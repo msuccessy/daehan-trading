@@ -104,3 +104,56 @@ img {
     font-size: 2rem;
   }
 }
+
+/* === i18n: per-locale typography === */
+/* Inter covers en/ru/uz (Latin + Cyrillic). Korean / Chinese / Arabic each get
+   their dedicated Noto family loaded by the [lang] layout. */
+[lang='ko'] {
+  font-family: var(--font-notoSans), var(--font-inter), system-ui, sans-serif;
+}
+[lang='en'],
+[lang='ru'],
+[lang='uz'] {
+  font-family: var(--font-inter), system-ui, sans-serif;
+}
+[lang='zh'] {
+  font-family: var(--font-noto-sc), var(--font-inter), system-ui, sans-serif;
+}
+[lang='ar'] {
+  font-family: var(--font-noto-arabic), var(--font-inter), system-ui, sans-serif;
+}
+
+/* Negative letter-spacing tightens Latin nicely but kills Arabic ligatures
+   and degrades CJK readability. Reset for those locales. */
+[lang='ar'] h1,
+[lang='ar'] h2,
+[lang='ar'] h3,
+[lang='ar'] h4,
+[lang='ar'] h5,
+[lang='ar'] h6,
+[lang='ar'] p,
+[lang='zh'] h1,
+[lang='zh'] h2,
+[lang='zh'] h3,
+[lang='zh'] h4,
+[lang='zh'] h5,
+[lang='zh'] h6,
+[lang='zh'] p {
+  letter-spacing: 0;
+}
+[lang='ar'] .section-title,
+[lang='zh'] .section-title {
+  letter-spacing: 0;
+}
+[lang='ar'] .section-badge {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+/* RTL: keep section-desc readable, prevent text overflow under flipped layouts */
+[dir='rtl'] body {
+  text-align: right;
+}
+[dir='rtl'] .section-desc {
+  margin-inline-start: 0;
+}

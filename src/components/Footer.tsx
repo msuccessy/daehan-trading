@@ -1,48 +1,43 @@
-import { Globe, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import type { Dict } from '@/i18n/get-dictionary';
+import type { Locale } from '@/i18n/config';
 import styles from './Footer.module.css';
 
-export default function Footer() {
+interface Props {
+  dict: Dict['footer'];
+  navDict: Dict['nav'];
+  locale: Locale;
+}
+
+export default function Footer({ dict, navDict, locale }: Props) {
+  void locale;
   return (
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.footerTop}>
           <div className={styles.footerBrand}>
             <div className={styles.logo}>
-              <span className={styles.logoKr}>대한무역</span>
-              <span className={styles.logoEn}>DAEHAN TRADING</span>
+              <span className={styles.logoSymbol} aria-hidden="true" />
+              <span className={styles.logoText}>
+                <span className={styles.logoKr}>대한무역</span>
+                <span className={styles.logoEn}>DAEHAN TRADE</span>
+              </span>
             </div>
-            <p className={styles.brandDesc}>글로벌 중고 모바일 디바이스 수출의 메가 허브</p>
+            <p className={styles.brandDesc}>{dict.tagline}</p>
           </div>
-          <div className={styles.footerLinks}>
-            <div className={styles.linkGroup}>
-              <h6>COMPANY</h6>
-              <a href="#">회사 소개</a>
-              <a href="#">경영 철학</a>
-              <a href="#">홍보 센터</a>
-            </div>
-            <div className={styles.linkGroup}>
-              <h6>BUSINESS</h6>
-              <a href="#">글로벌 B2B 수출입</a>
-              <a href="#">프리미엄 단말기 유통</a>
-              <a href="#">전문 품질 검수 솔루션</a>
-            </div>
-            <div className={styles.linkGroup}>
-              <h6>LEGAL</h6>
-              <a href="#">이용약관</a>
-              <a href="#"><strong>개인정보처리방침</strong></a>
-            </div>
-          </div>
+          <nav className={styles.footerNav}>
+            <a href="#hero">{navDict.vision}</a>
+            <a href="#news">{navDict.news}</a>
+            <a href="#global">{navDict.global}</a>
+            <a href="#contact">{navDict.contact}</a>
+          </nav>
         </div>
         <div className={styles.footerBottom}>
-          <p className={styles.copyright}>© 2026 DAEHAN TRADING Corp. All Rights Reserved.</p>
-          <div className={styles.socialLinks}>
-            <a href="#" aria-label="Globe">
-              <Globe size={20} />
-            </a>
-            <a href="#" aria-label="Mail">
-              <Mail size={20} />
-            </a>
-          </div>
+          <p className={styles.copyright}>{dict.copyright}</p>
+          <a href="mailto:cs@daehantrade.kr" className={styles.mailLink} aria-label="Email">
+            <Mail size={18} />
+            <span>cs@daehantrade.kr</span>
+          </a>
         </div>
       </div>
     </footer>

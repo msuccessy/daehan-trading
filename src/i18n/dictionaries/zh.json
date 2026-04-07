@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "title": "DAEHAN TRADE | 全球二手手机批发出口",
+    "description": "DAEHAN TRADE — 深耕二手手机出口贸易,依托全球直营渠道,为客户提供安全、高效的大宗交易服务。"
+  },
+  "nav": {
+    "vision": "企业愿景",
+    "news": "行业动态",
+    "global": "全球网络",
+    "contact": "联系我们"
+  },
+  "logo": {
+    "primary": "DAEHAN",
+    "secondary": "TRADE",
+    "ariaLabel": "DAEHAN TRADE"
+  },
+  "hero": {
+    "slides": [
+      {
+        "subtitle": "Global Standard",
+        "titleLines": ["二手手机出口贸易的引领者", "从 DAEHAN TRADE 开始"],
+        "desc": "在亚洲(香港)、中东与非洲(迪拜)及中亚(乌兹别克斯坦)均设有直营供应渠道。",
+        "alt": "全球分销网络"
+      },
+      {
+        "subtitle": "Premium Quality",
+        "titleLines": ["值得信赖", "二手手机品质分级标准"],
+        "desc": "依托专业检测设备与资深质检团队严格把关,以 DAEHAN TRADE 的全球标准面向海外分销。",
+        "alt": "高端机型"
+      }
+    ]
+  },
+  "news": {
+    "badge": "Industry News",
+    "title": "市场动态与企业资讯",
+    "desc": "持续为您传递瞬息万变的移动通信市场与全球二手手机出口行业的最新动态。",
+    "viewAll": "查看更多",
+    "category": "企业新闻",
+    "fallback": "暂时无法加载新闻,请稍后再试。",
+    "readMore": "阅读全文",
+    "sourceLanguageNote": "新闻原文为韩文,中文版正在筹备中。"
+  },
+  "global": {
+    "badge": "Worldwide Network",
+    "titleLines": ["连接世界", "DAEHAN TRADE 的全球直营渠道"],
+    "desc": "我们以韩国为总部,在亚洲(深圳、香港)、中亚(乌兹别克斯坦)、中东与非洲(迪拜)均建有直营分销网络。",
+    "hubs": {
+      "seoul":    { "name": "首尔",         "shortLabel": "Seoul",     "role": "总部 / 全球运营中枢" },
+      "shenzhen": { "name": "深圳",         "shortLabel": "Shenzhen",  "role": "中国分公司 / 亚洲物流中心" },
+      "hongkong": { "name": "香港",         "shortLabel": "Hong Kong", "role": "亚洲分公司 / 亚洲直营渠道" },
+      "dubai":    { "name": "迪拜",         "shortLabel": "Dubai",     "role": "MEA 分公司 / 中东与非洲直营渠道" },
+      "uzbek":    { "name": "乌兹别克斯坦", "shortLabel": "Uzbekistan","role": "独联体分公司 / 中亚与东欧直营渠道" }
+    }
+  },
+  "contact": {
+    "badge": "Contact Us",
+    "titleLines": ["商务合作洽谈"],
+    "descLines": ["如需安全、高效的大宗进出口交易,", "我们的专属团队将在一个工作日内为您回复。"],
+    "channels": {
+      "address": { "label": "总部地址", "value": "韩国京畿道安阳市东安区市民大路365街40号C栋6层3604室" },
+      "phone":   { "label": "联系电话", "value": "+82 10 8991 2680" },
+      "email":   { "label": "邮箱",     "value": "cs@daehantrade.kr" }
+    }
+  },
+  "footer": {
+    "tagline": "二手手机出口贸易的引领者 · DAEHAN TRADE",
+    "sections": {
+      "company":  { "heading": "COMPANY",  "links": ["公司简介", "经营理念", "新闻动态"] },
+      "business": { "heading": "BUSINESS", "links": ["全球 B2B 进出口", "高端机型分销", "专业品质检测"] },
+      "legal":    { "heading": "LEGAL",    "links": ["使用条款", "隐私政策"] }
+    },
+    "copyright": "© 2026 DAEHAN TRADE Corp. 保留所有权利。"
+  },
+  "switcher": {
+    "label": "选择语言",
+    "selected": "当前语言"
+  }
+}

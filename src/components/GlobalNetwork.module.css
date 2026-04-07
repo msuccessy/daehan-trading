@@ -227,3 +227,21 @@
     border-radius: 0;
   }
 }
+
+/* === RTL overrides === */
+:global([dir='rtl']) .globalSection::before {
+  right: auto;
+  left: -20%;
+}
+/* Lock the world map LTR — pin coordinates are geographic, not chrome */
+:global([dir='rtl']) .mapVisual,
+:global([dir='rtl']) .mapContainer {
+  direction: ltr;
+}
+:global([dir='rtl']) .hubName {
+  letter-spacing: 0;
+}
+:global([dir='rtl']) .hubItem {
+  /* flex auto-mirrors; just ensure dot stays on the visual leading edge */
+  flex-direction: row;
+}
