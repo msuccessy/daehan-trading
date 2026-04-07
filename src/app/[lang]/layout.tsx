@@ -54,10 +54,22 @@ export async function generateMetadata({
   const languages: Record<string, string> = { 'x-default': `/${DEFAULT_LOCALE}` };
   for (const l of LOCALES) languages[l] = `/${l}`;
 
+  const ogLocaleMap: Record<string, string> = {
+    ko: 'ko_KR', en: 'en_US', zh: 'zh_CN', ar: 'ar_SA', ru: 'ru_RU', uz: 'uz_UZ',
+  };
+
   return {
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: { languages },
+    openGraph: {
+      title: dict.meta.title,
+      description: dict.meta.description,
+      siteName: '대한무역 | DAEHAN TRADE',
+      locale: ogLocaleMap[lang] ?? 'ko_KR',
+      type: 'website',
+      images: [{ url: '/assets/hero1_1775021872593.png', width: 1200, height: 630 }],
+    },
   };
 }
 

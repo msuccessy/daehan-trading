@@ -83,7 +83,7 @@ const TRADE_KEYWORDS = [
   '중동',
 ];
 
-// Negative keywords — generic telecom infrastructure that we DO NOT want.
+// Negative keywords — topics unrelated to used-phone trade that we DO NOT want.
 const NEGATIVE_KEYWORDS = [
   '위성통신',
   '저궤도',
@@ -94,6 +94,35 @@ const NEGATIVE_KEYWORDS = [
   '방송법',
   '5G 인프라',
   '6G 인프라',
+  '스테이블코인',
+  '가상자산',
+  '비트코인',
+  '이더리움',
+  '블록체인',
+  '석유화학',
+  '원유',
+  '사우디',
+  '이란',
+  '이스라엘',
+  '미사일',
+  '보복 공격',
+  '전쟁',
+  '군사',
+  '국방',
+  '부동산',
+  '아파트',
+  '재건축',
+  '주가',
+  '증시',
+  '코스피',
+  '코스닥',
+];
+
+// Fallback filter — at least IT/mobile/tech related for filling empty slots.
+const TECH_KEYWORDS = [
+  '스마트폰', '휴대폰', '단말기', '아이폰', '갤럭시', '삼성전자', '애플',
+  'IT', 'AI', '반도체', '디스플레이', '배터리', '충전', '통신',
+  '앱', '플랫폼', '전자', '테크', '모바일', '5G', '폴더블',
 ];
 
 const FALLBACK_IMAGES = [
@@ -368,11 +397,16 @@ export async function getLatestNews(): Promise<NewsItem[]> {
     .slice(0, 3)
     .map((entry) => entry.item);
 
-  // If fewer than 3 relevant items, fill remaining slots with most recent articles.
+  // If fewer than 3 relevant items, fill with most recent IT/tech articles.
   if (relevant.length < 3) {
     const usedLinks = new Set(relevant.map((r) => r.link));
     const recents = unique
-      .filter((item) => !usedLinks.has(item.link) && relevanceScore(item) >= 0)
+      .filter((item) => {
+        if (usedLinks.has(item.link)) return false;
+        if (relevanceScore(item) <= 0) return false;
+        const text = `${item.title} ${item.preview}`;
+        return TECH_KEYWORDS.some((kw) => text.includes(kw));
+      })
       .sort((a, b) => b.pubDate - a.pubDate)
       .slice(0, 3 - relevant.length);
     relevant.push(...recents);
