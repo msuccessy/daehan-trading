@@ -119,8 +119,7 @@
   .logoKr { font-size: 1.5rem; }
   .logoEn { font-size: 0.78rem; letter-spacing: 0.18em; padding-left: 12px; }
   .brandDesc { margin-left: 68px; } /* mobile: 56px logo + 12px gap */
-  .footerNav { justify-content: center; padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.08); }
-  .footerNav { flex-wrap: wrap; gap: 24px; }
+  .footerNav { display: none; }
   .footerBottom { flex-direction: column-reverse; gap: 24px; align-items: flex-start; }
 }
 
