@@ -21,20 +21,24 @@ const notoSansKR = Noto_Sans_KR({
   display: 'swap',
 });
 
-// Simplified Chinese — only loaded by /zh route
+// Simplified Chinese — only loaded by /zh route. preload: false avoids
+// link-preload-but-not-used warnings on non-zh locales (the variable is
+// only attached to <body> when locale === 'zh').
 const notoSansSC = Noto_Sans_SC({
   subsets: ['latin'],
   variable: '--font-noto-sc',
   weight: ['400', '500', '700'],
   display: 'swap',
+  preload: false,
 });
 
-// Arabic — only loaded by /ar route
+// Arabic — only loaded by /ar route. Same rationale as notoSansSC.
 const notoSansArabic = Noto_Sans_Arabic({
   subsets: ['arabic'],
   variable: '--font-noto-arabic',
   weight: ['400', '500', '700'],
   display: 'swap',
+  preload: false,
 });
 
 // Statically generate every locale at build time.
@@ -59,6 +63,10 @@ export async function generateMetadata({
   };
 
   return {
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL ??
+        (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://daehantrade.kr')
+    ),
     title: dict.meta.title,
     description: dict.meta.description,
     alternates: { languages },

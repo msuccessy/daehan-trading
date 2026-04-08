@@ -182,9 +182,10 @@
 }
 
 @media (max-width: 768px) {
-  .navContainer { padding: 0 24px; }
+  .navContainer { padding: 0 14px; }
   .navLinks { display: none; }
   .navRight > :first-child { display: none; } /* Hide language switcher in header */
+  .navRight { gap: 8px; }
   .mobileMenuBtn {
     display: block;
     cursor: pointer;
@@ -195,20 +196,26 @@
     gap: 8px;
   }
   .logoSymbol {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
   }
   .logoText {
-    gap: 14px;
+    gap: 10px;
   }
   .logoKr {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
   }
   .logoEn {
-    font-size: 0.74rem;
-    letter-spacing: 0.18em;
-    padding-left: 12px;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    padding-left: 10px;
   }
+}
+
+@media (max-width: 360px) {
+  .navContainer { padding: 0 12px; }
+  .logoText { gap: 8px; }
+  .logoEn { padding-left: 8px; letter-spacing: 0.14em; }
 }
 
 /* Mobile Fullscreen Menu Overlay */
