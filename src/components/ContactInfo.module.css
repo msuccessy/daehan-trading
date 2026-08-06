@@ -83,6 +83,73 @@ a.channelValue:hover {
   color: var(--color-accent);
 }
 
+/* Messenger QR codes */
+.qrBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.qrHeading {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
+.qrHint {
+  font-size: 0.9375rem;
+  color: var(--color-text-light);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 480px;
+  margin-bottom: 12px;
+}
+
+.qrGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.qrCard {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 18px;
+  padding: 28px 20px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.qrImageWrap {
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  border-radius: 12px;
+}
+
+.qrImage {
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+}
+
+.qrLabel {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: -0.01em;
+}
+
 @media (max-width: 768px) {
   .contactWrapper {
     gap: 40px;
@@ -96,6 +163,28 @@ a.channelValue:hover {
   }
   .channelValue {
     font-size: 1rem;
+  }
+  .qrGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 280px;
+    margin-inline: auto;
+  }
+  .qrCard {
+    padding: 24px 20px 20px;
+  }
+  .qrImageWrap,
+  .qrImage {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .qrImageWrap,
+  .qrImage {
+    width: 130px;
+    height: 130px;
   }
 }
 

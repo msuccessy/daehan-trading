@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import Image from 'next/image';
 import { MapPin, Phone, Mail } from 'lucide-react';
 import type { Dict } from '@/i18n/get-dictionary';
 import styles from './ContactInfo.module.css';
@@ -6,6 +7,12 @@ import styles from './ContactInfo.module.css';
 interface Props {
   dict: Dict['contact'];
 }
+
+const QR_CHANNELS = [
+  { key: 'wechat' as const, src: '/assets/qr/wechat.png' },
+  { key: 'whatsapp' as const, src: '/assets/qr/whatsapp.png' },
+  { key: 'line' as const, src: '/assets/qr/line.png' },
+];
 
 export default function ContactInfo({ dict }: Props) {
   return (
@@ -59,6 +66,27 @@ export default function ContactInfo({ dict }: Props) {
               <MapPin className={styles.channelIcon} size={28} aria-hidden="true" />
               <div className={styles.channelLabel}>{dict.channels.address.label}</div>
               <p className={styles.channelValue}>{dict.channels.address.value}</p>
+            </div>
+          </div>
+
+          <div className={styles.qrBlock}>
+            <h3 className={styles.qrHeading}>{dict.qr.heading}</h3>
+            <p className={styles.qrHint}>{dict.qr.hint}</p>
+            <div className={styles.qrGrid}>
+              {QR_CHANNELS.map(({ key, src }) => (
+                <div key={key} className={styles.qrCard}>
+                  <div className={styles.qrImageWrap}>
+                    <Image
+                      src={src}
+                      alt={dict.qr.channels[key].alt}
+                      width={160}
+                      height={160}
+                      className={styles.qrImage}
+                    />
+                  </div>
+                  <span className={styles.qrLabel}>{dict.qr.channels[key].label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
