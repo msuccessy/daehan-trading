@@ -59,7 +59,7 @@
     "channels": {
       "address": { "label": "본사 주소", "value": "경기도 안양시 동안구 시민대로365번길 40, 씨동 6층 3604호" },
       "phone":   { "label": "대표 전화", "value": "+82 10 8991 2680" },
-      "email":   { "label": "이메일",    "value": "tyjj9999999@naver.com" }
+      "email":   { "label": "이메일",    "value": "cs@daehantrade.kr" }
     },
     "qr": {
       "heading": "메신저로 문의",
