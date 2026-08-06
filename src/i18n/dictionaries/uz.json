@@ -18,13 +18,19 @@
     "slides": [
       {
         "subtitle": "Global Standard",
-        "titleLines": ["Ishlatilgan telefonlar eksportining markazi", "DAEHAN TRADEʼdan boshlanadi"],
+        "titleLines": [
+          "Ishlatilgan telefonlar eksportining markazi",
+          "DAEHAN TRADEʼdan boshlanadi"
+        ],
         "desc": "Osiyo (Gonkong), Markaziy Osiyo (Oʻzbekiston) hamda Yaqin Sharq va Afrika (Dubay) hududlarida toʻgʻridan-toʻgʻri yetkazib berish kanallariga egamiz.",
         "alt": "Global tarqatish tarmogʻi"
       },
       {
         "subtitle": "Premium Quality",
-        "titleLines": ["Ishonib sotib olish mumkin boʻlgan", "ishlatilgan telefonlar tasnifi mezoni"],
+        "titleLines": [
+          "Ishonib sotib olish mumkin boʻlgan",
+          "ishlatilgan telefonlar tasnifi mezoni"
+        ],
         "desc": "Professional tekshiruv jihozlari va malakali mutaxassislar tomonidan tasdiqlangan ishonch darajasida tarqatiladigan — faqat DAEHAN TRADEʼga xos jahon standarti.",
         "alt": "Premium qurilmalar"
       }
@@ -42,32 +48,107 @@
   },
   "global": {
     "badge": "Worldwide Network",
-    "titleLines": ["Dunyoni bogʻlovchi", "DAEHAN TRADEʼning toʻgʻridan-toʻgʻri jahon kanallari"],
+    "titleLines": [
+      "Dunyoni bogʻlovchi",
+      "DAEHAN TRADEʼning toʻgʻridan-toʻgʻri jahon kanallari"
+    ],
     "desc": "Koreyadan boshlab Osiyo (Shenchjen, Gonkong), Markaziy Osiyo (Oʻzbekiston), Yaqin Sharq va Afrika (Dubay) hududlarida toʻgʻridan-toʻgʻri tarqatish tarmogʻiga egamiz.",
     "hubs": {
-      "seoul":    { "name": "Seul",        "shortLabel": "Seoul",     "role": "Bosh ofis / Jahon boshqaruv markazi" },
-      "shenzhen": { "name": "Shenchjen",   "shortLabel": "Shenzhen",  "role": "Xitoy filiali / Osiyo logistika hubi" },
-      "hongkong": { "name": "Gonkong",     "shortLabel": "Hong Kong", "role": "Osiyo filiali / toʻgʻridan-toʻgʻri Osiyo kanali" },
-      "dubai":    { "name": "Dubay",       "shortLabel": "Dubai",     "role": "MEA filiali / Yaqin Sharq va Afrika kanali" },
-      "uzbek":    { "name": "Oʻzbekiston", "shortLabel": "Uzbekistan","role": "MDH filiali / Markaziy Osiyo va Sharqiy Yevropa kanali" }
+      "seoul": {
+        "name": "Seul",
+        "shortLabel": "Seoul",
+        "role": "Bosh ofis / Jahon boshqaruv markazi"
+      },
+      "shenzhen": {
+        "name": "Shenchjen",
+        "shortLabel": "Shenzhen",
+        "role": "Xitoy filiali / Osiyo logistika hubi"
+      },
+      "hongkong": {
+        "name": "Gonkong",
+        "shortLabel": "Hong Kong",
+        "role": "Osiyo filiali / toʻgʻridan-toʻgʻri Osiyo kanali"
+      },
+      "dubai": {
+        "name": "Dubay",
+        "shortLabel": "Dubai",
+        "role": "MEA filiali / Yaqin Sharq va Afrika kanali"
+      },
+      "uzbek": {
+        "name": "Oʻzbekiston",
+        "shortLabel": "Uzbekistan",
+        "role": "MDH filiali / Markaziy Osiyo va Sharqiy Yevropa kanali"
+      }
     }
   },
   "contact": {
     "badge": "Contact Us",
-    "titleLines": ["Biznes hamkorlik uchun bogʻlaning"],
-    "descLines": ["Xavfsiz va yirik hajmli eksport-import bitimlari uchun", "DAEHAN TRADE mutaxassislari tezkor javob beradi."],
+    "titleLines": [
+      "Biznes hamkorlik uchun bogʻlaning"
+    ],
+    "descLines": [
+      "Xavfsiz va yirik hajmli eksport-import bitimlari uchun",
+      "DAEHAN TRADE mutaxassislari tezkor javob beradi."
+    ],
     "channels": {
-      "address": { "label": "Bosh ofis manzili", "value": "Koreya, Gyeonggi viloyati, Anyang sh., Dongan-gu, Simindae-ro 365beon-gil, 40, C bino, 6-qavat, 3604-xona" },
-      "phone":   { "label": "Telefon",            "value": "+82 10 8991 2680" },
-      "email":   { "label": "E-pochta",           "value": "cs@daehantrade.kr" }
+      "address": {
+        "label": "Bosh ofis manzili",
+        "value": "Koreya, Gyeonggi viloyati, Anyang sh., Dongan-gu, Simindae-ro 365beon-gil, 40, C bino, 6-qavat, 3604-xona"
+      },
+      "phone": {
+        "label": "Telefon",
+        "value": "+82 10 8991 2680"
+      },
+      "email": {
+        "label": "E-pochta",
+        "value": "cs@daehantrade.kr"
+      }
+    },
+    "qr": {
+      "heading": "Messenjer orqali bogʻlaning",
+      "hint": "Qulay messenjer orqali bogʻlanish uchun QR kodni skanerlang.",
+      "channels": {
+        "wechat": {
+          "label": "WeChat",
+          "alt": "WeChat QR kodi"
+        },
+        "whatsapp": {
+          "label": "WhatsApp",
+          "alt": "WhatsApp QR kodi"
+        },
+        "line": {
+          "label": "LINE",
+          "alt": "LINE QR kodi"
+        }
+      }
     }
   },
   "footer": {
     "tagline": "Ishlatilgan telefonlar eksportining markazi · DAEHAN TRADE",
     "sections": {
-      "company":  { "heading": "COMPANY",  "links": ["Kompaniya haqida", "Boshqaruv falsafasi", "Matbuot xizmati"] },
-      "business": { "heading": "BUSINESS", "links": ["Global B2B savdo", "Premium qurilmalar tarqatish", "Professional sifat nazorati yechimi"] },
-      "legal":    { "heading": "LEGAL",    "links": ["Foydalanish shartlari", "Maxfiylik siyosati"] }
+      "company": {
+        "heading": "COMPANY",
+        "links": [
+          "Kompaniya haqida",
+          "Boshqaruv falsafasi",
+          "Matbuot xizmati"
+        ]
+      },
+      "business": {
+        "heading": "BUSINESS",
+        "links": [
+          "Global B2B savdo",
+          "Premium qurilmalar tarqatish",
+          "Professional sifat nazorati yechimi"
+        ]
+      },
+      "legal": {
+        "heading": "LEGAL",
+        "links": [
+          "Foydalanish shartlari",
+          "Maxfiylik siyosati"
+        ]
+      }
     },
     "copyright": "© 2026 DAEHAN TRADE Corp. Barcha huquqlar himoya qilingan."
   },
