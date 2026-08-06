@@ -34,9 +34,9 @@ export default function Footer({ dict, navDict, locale }: Props) {
         </div>
         <div className={styles.footerBottom}>
           <p className={styles.copyright}>{dict.copyright}</p>
-          <a href="mailto:cs@daehantrade.kr" className={styles.mailLink} aria-label="Email">
+          <a href="mailto:tyjj9999999@naver.com" className={styles.mailLink} aria-label="Email">
             <Mail size={18} />
-            <span>cs@daehantrade.kr</span>
+            <span>tyjj9999999@naver.com</span>
           </a>
         </div>
       </div>
