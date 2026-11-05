@@ -29,10 +29,15 @@ const SOURCES: ReadonlyArray<{ name: string; url: string }> = [
   { name: 'etnews-속보', url: 'https://rss.etnews.com/Section902.xml' },
   // 전자신문 오늘의 추천기사
   { name: 'etnews-추천', url: 'https://rss.etnews.com/Section904.xml' },
+  // 전자신문 통신·모바일 섹션 — 스마트폰 기사가 가장 많고 피드가 약 2일치를 담는다
+  { name: 'etnews-mobile', url: 'https://rss.etnews.com/03.xml' },
   // ZDNet Korea — IT 종합
   { name: 'zdnet-korea', url: 'https://feeds.feedburner.com/zdkorea' },
-  // 한국경제 IT
-  { name: 'hankyung-it', url: 'https://www.hankyung.com/feed/it' },
+  // 아이뉴스24 IT (100건, 통신사·단말 기사 다수)
+  { name: 'inews24-it', url: 'https://www.inews24.com/rss/news_it.xml' },
+  // 디일렉 — 스마트폰 부품·공급망 전문지
+  { name: 'thelec', url: 'https://www.thelec.kr/rss/allArticle.xml' },
+  // (한국경제 IT 피드는 2026-11 부터 403 이라 제외)
   // 매일경제 경제 (provides media:content thumbnails directly)
   { name: 'mk-economy', url: 'https://www.mk.co.kr/rss/30100041/' },
   // 매일경제 전체뉴스 (largest pool, includes all MK sections)
@@ -150,8 +155,10 @@ export type NewsItem = {
 const SOURCE_DISPLAY_NAMES: Record<string, string> = {
   'etnews-속보': '전자신문',
   'etnews-추천': '전자신문',
+  'etnews-mobile': '전자신문',
   'zdnet-korea': 'ZDNet Korea',
-  'hankyung-it': '한국경제',
+  'inews24-it': '아이뉴스24',
+  'thelec': '디일렉',
   'mk-economy': '매일경제',
   'mk-all': '매일경제',
 };
@@ -214,7 +221,8 @@ async function fetchFeed(source: { name: string; url: string }): Promise<RawItem
     return feed.items
       .filter((item) => item.link && item.title)
       .map((item) => {
-        const cleanTitle = (item.title || '').split(' - ')[0].trim();
+        // 아이뉴스24 등은 제목에 &quot; 같은 엔티티를 그대로 싣는다
+        const cleanTitle = decodeHtmlEntities((item.title || '').split(' - ')[0]).trim();
         const snippet = (item.contentSnippet || '').trim();
         const preview = snippet.length > 130 ? snippet.slice(0, 130) + '...' : snippet;
         const ts = item.pubDate ? new Date(item.pubDate).getTime() : 0;
