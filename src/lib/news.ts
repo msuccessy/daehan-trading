@@ -122,7 +122,8 @@ const NEGATIVE_KEYWORDS = [
 const TECH_KEYWORDS = [
   '스마트폰', '휴대폰', '단말기', '아이폰', '갤럭시', '삼성전자', '애플',
   'IT', 'AI', '반도체', '디스플레이', '배터리', '충전', '통신',
-  '앱', '플랫폼', '전자', '테크', '모바일', '5G', '폴더블',
+  // No bare '전자' — it substring-matches 전자발찌 (crime news) and the like.
+  '앱', '플랫폼', '가전', '테크', '모바일', '5G', '폴더블',
 ];
 
 const FALLBACK_IMAGES = [
@@ -243,13 +244,16 @@ async function fetchFeed(source: { name: string; url: string }): Promise<RawItem
  *  - score ≥ 5 → strong match (preferred)
  *  - score ≥ 3 → weak match (single phone mention, used to fill remaining slots)
  */
+function isExcluded(item: RawItem): boolean {
+  const text = `${item.title} ${item.preview}`;
+  return NEGATIVE_KEYWORDS.some((neg) => text.includes(neg));
+}
+
 function relevanceScore(item: RawItem): number {
   const text = `${item.title} ${item.preview}`;
 
   // Hard exclude: generic telecom infrastructure
-  for (const neg of NEGATIVE_KEYWORDS) {
-    if (text.includes(neg)) return 0;
-  }
+  if (isExcluded(item)) return 0;
 
   let score = 0;
 
@@ -403,7 +407,9 @@ export async function getLatestNews(): Promise<NewsItem[]> {
     const recents = unique
       .filter((item) => {
         if (usedLinks.has(item.link)) return false;
-        if (relevanceScore(item) <= 0) return false;
+        // Only drop negative-keyword items here. relevanceScore() is 0 for any
+        // item without a phone keyword, so using it would empty the fallback.
+        if (isExcluded(item)) return false;
         const text = `${item.title} ${item.preview}`;
         return TECH_KEYWORDS.some((kw) => text.includes(kw));
       })
